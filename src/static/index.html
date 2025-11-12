@@ -12,6 +12,9 @@
     />
   </head>
   <body>
+    <!-- Announcements Section -->
+    <div id="announcements-container"></div>
+    
     <header>
       <h1>Mergington High School</h1>
       <h2>Extracurricular Activities</h2>
@@ -23,6 +26,10 @@
           </button>
           <div id="user-info" class="hidden">
             <span id="display-name"></span>
+            <button id="manage-announcements-button" class="icon-button">
+              <span class="announcement-icon">📢</span>
+              <span>Manage Announcements</span>
+            </button>
             <button id="logout-button">Logout</button>
           </div>
         </div>
@@ -131,6 +138,74 @@
           <button type="submit">Login</button>
         </form>
         <div id="login-message" class="hidden message"></div>
+      </div>
+    </div>
+
+    <!-- Announcements Management Modal -->
+    <div id="announcements-modal" class="modal hidden">
+      <div class="modal-content announcements-modal-content">
+        <span class="close-announcements-modal">&times;</span>
+        <h3>Manage Announcements</h3>
+        
+        <div class="announcements-actions">
+          <button id="add-announcement-button" class="primary-button">
+            <span>➕</span> Add New Announcement
+          </button>
+        </div>
+
+        <div id="announcements-list">
+          <p class="loading-text">Loading announcements...</p>
+        </div>
+
+        <div id="announcement-message" class="hidden message"></div>
+      </div>
+    </div>
+
+    <!-- Announcement Form Modal -->
+    <div id="announcement-form-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-announcement-form-modal">&times;</span>
+        <h3 id="announcement-form-title">Add New Announcement</h3>
+        
+        <form id="announcement-form">
+          <div class="form-group">
+            <label for="announcement-title">Title *</label>
+            <input type="text" id="announcement-title" required maxlength="200" placeholder="Enter announcement title" />
+          </div>
+          
+          <div class="form-group">
+            <label for="announcement-message">Message *</label>
+            <textarea id="announcement-message" required maxlength="1000" rows="4" placeholder="Enter announcement message"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="announcement-start-date">Start Date (Optional)</label>
+            <input type="datetime-local" id="announcement-start-date" />
+            <small>Leave blank to start immediately</small>
+          </div>
+          
+          <div class="form-group">
+            <label for="announcement-expiration-date">Expiration Date *</label>
+            <input type="datetime-local" id="announcement-expiration-date" required />
+          </div>
+          
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="announcement-active" checked />
+              <span class="checkmark"></span>
+              Active
+            </label>
+          </div>
+          
+          <div class="form-actions">
+            <button type="button" id="cancel-announcement-form" class="secondary-button">Cancel</button>
+            <button type="submit" class="primary-button">Save Announcement</button>
+          </div>
+          
+          <input type="hidden" id="announcement-id" value="" />
+        </form>
+        
+        <div id="announcement-form-message" class="hidden message"></div>
       </div>
     </div>
 
